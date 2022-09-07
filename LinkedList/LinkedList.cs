@@ -36,6 +36,26 @@ namespace LinkedList
             this.head = new Node<T>(data);
             head.next = tempNode;
         }
+        public void InsertBetween(T dataOne, T dataTwo, T data)
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("The specified order of elements not found");
+                return;
+            }
+            Node<T> tempNode = this.head;
+            while (!(tempNode.data.Equals(dataOne) && tempNode.next.data.Equals(dataTwo) && tempNode.next != null))
+            {
+                tempNode = tempNode.next;
+            }
+            if (tempNode.next == null)
+                return;
+            Node<T> tempNextNode = tempNode.next;
+
+            tempNode.next = new Node<T>(data);
+
+            tempNode.next.next = tempNextNode;
+        }
 
         public void DisplayLinkedList()
         {

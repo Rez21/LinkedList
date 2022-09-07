@@ -1,4 +1,6 @@
-﻿namespace LinkedList
+﻿using System.Collections.Generic;
+
+namespace LinkedList
 {
     class Program
     {
@@ -20,8 +22,15 @@
             linkedListOne.InsertAtFirst(30);
             linkedListOne.InsertAtFirst(56);
 
-            // Displaying linked list
+            LinkedList<int> linkedListTwo = new LinkedList<int>();
+            linkedListTwo.InsertAtLast(56);
+            linkedListTwo.InsertAtLast(70);
+            linkedListTwo.InsertBetween(56, 70, 30);
+
+            // Display
             linkedList.DisplayLinkedList();
+            linkedListOne.DisplayLinkedList();
+            linkedListTwo.DisplayLinkedList();
         }
     }
 }
