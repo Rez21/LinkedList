@@ -27,6 +27,8 @@ namespace LinkedList
             linkedListTwo.InsertAtLast(70);
             linkedListTwo.InsertBetween(56, 70, 30);
 
+            linkedListTwo.DeleteAtFirst(); // delete  first 
+
             // Display
             linkedList.DisplayLinkedList();
             linkedListOne.DisplayLinkedList();

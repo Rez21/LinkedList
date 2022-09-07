@@ -56,6 +56,18 @@ namespace LinkedList
 
             tempNode.next.next = tempNextNode;
         }
+        public void DeleteAtFirst()
+        {
+            // If linked list is empty
+            if (this.head == null)
+            {
+                Console.WriteLine("No elements in linked list");
+                return;
+            }
+
+            // If linked list is not empty
+            this.head = head.next;
+        }
 
         public void DisplayLinkedList()
         {
