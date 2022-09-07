@@ -24,6 +24,19 @@ namespace LinkedList
             tempLastNode.next = new Node<T>(data);
             tempLastNode = tempLastNode.next;
         }
+        public void InsertAtFirst(T data)
+        {
+            if (this.head == null)
+            {
+                this.head = new Node<T>(data);
+                tempLastNode = head;
+                return;
+            }
+            Node<T> tempNode = this.head;
+            this.head = new Node<T>(data);
+            head.next = tempNode;
+        }
+
         public void DisplayLinkedList()
         {
             // If linked list is empty

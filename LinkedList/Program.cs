@@ -14,6 +14,12 @@
             linkedList.InsertAtLast(30);
             linkedList.InsertAtLast(70);
 
+
+            LinkedList<int> linkedListOne = new LinkedList<int>();
+            linkedListOne.InsertAtFirst(70);
+            linkedListOne.InsertAtFirst(30);
+            linkedListOne.InsertAtFirst(56);
+
             // Displaying linked list
             linkedList.DisplayLinkedList();
         }
