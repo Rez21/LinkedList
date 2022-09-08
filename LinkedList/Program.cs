@@ -35,6 +35,8 @@ namespace LinkedList
             Console.Write("\n\nPopped first element");
             linkedListTwo.DisplayLinkedList();
 
+
+            linkedList.SearchElement(30);
         }
     }
 }

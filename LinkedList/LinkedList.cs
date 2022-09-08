@@ -92,7 +92,28 @@ namespace LinkedList
 
             // Make the next of last but one element as null
             tempNode.next = null;
-
+        }
+        public int SearchElement(T data)
+        {
+            int elementNum = 1;
+            Node<T> tempNode = this.head;
+            // If the data of temp node is not equal to zero
+            while (!tempNode.data.Equals(data))
+            {
+                if (tempNode.next != null)
+                {
+                    elementNum++;
+                    tempNode = tempNode.next;
+                }
+                else
+                {
+                    Console.WriteLine("Element not found");
+                    return 0;
+                }
+            }
+            // Check the element number and return it
+            Console.WriteLine($"Element found at {elementNum}");
+            return elementNum;
         }
 
         public void DisplayLinkedList()
