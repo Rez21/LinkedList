@@ -27,12 +27,14 @@ namespace LinkedList
             linkedListTwo.InsertAtLast(70);
             linkedListTwo.InsertBetween(56, 70, 30);
 
-            linkedListTwo.DeleteAtFirst(); // delete  first 
-
-            // Display
+            linkedListTwo.Pop();
+            linkedListOne.PopLast();
             linkedList.DisplayLinkedList();
+            Console.Write("\n\nPopped last element");
             linkedListOne.DisplayLinkedList();
+            Console.Write("\n\nPopped first element");
             linkedListTwo.DisplayLinkedList();
+
         }
     }
 }
