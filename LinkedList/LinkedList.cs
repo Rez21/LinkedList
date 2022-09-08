@@ -6,62 +6,15 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    class LinkedList<T>
+    public class LinkedList<T> where T : IComparable
     {
-        private Node<T> head;
-        private Node<T> tempLastNode;
-        public void InsertAtLast(T data)
-        {
-            // If the linked list is empty
-            if (this.head == null)
-            {
-                this.head = new Node<T>(data);
-                tempLastNode = head;
-                return;
-            }
-
-            // If the head is already full
-            tempLastNode.next = new Node<T>(data);
-            tempLastNode = tempLastNode.next;
-        }
-        public void InsertAtFirst(T data)
-        {
-            if (this.head == null)
-            {
-                this.head = new Node<T>(data);
-                tempLastNode = head;
-                return;
-            }
-            Node<T> tempNode = this.head;
-            this.head = new Node<T>(data);
-            head.next = tempNode;
-        }
-        public void InsertBetween(T dataOne, T dataTwo, T data)
-        {
-            if (this.head == null)
-            {
-                Console.WriteLine("The specified order of elements not found");
-                return;
-            }
-            Node<T> tempNode = this.head;
-            while (!(tempNode.data.Equals(dataOne) && tempNode.next.data.Equals(dataTwo) && tempNode.next != null))
-            {
-                tempNode = tempNode.next;
-            }
-            if (tempNode.next == null)
-                return;
-            Node<T> tempNextNode = tempNode.next;
-
-            tempNode.next = new Node<T>(data);
-
-            tempNode.next.next = tempNextNode;
-        }
+        public Node<T> head;
         public void Pop()
         {
             // If linked list is empty
             if (this.head == null)
             {
-                Console.WriteLine("No elements in linked list");
+                Console.WriteLine("\nNo elements in linked list");
                 return;
             }
 
@@ -70,12 +23,12 @@ namespace LinkedList
         }
         public void PopLast()
         {
+            // If linked list is empty
             if (this.head == null)
             {
-                Console.WriteLine("No elements in linked list");
+                Console.WriteLine("\nNo elements in linked list");
                 return;
             }
-
             // If it has only one element
             if (head.next == null)
             {
@@ -95,8 +48,16 @@ namespace LinkedList
         }
         public int SearchElement(T data)
         {
+            // If linked list is empty
+            if (this.head == null)
+            {
+                Console.WriteLine("\nNo elements in linked list");
+                return 0;
+            }
+
             int elementNum = 1;
             Node<T> tempNode = this.head;
+
             // If the data of temp node is not equal to zero
             while (!tempNode.data.Equals(data))
             {
@@ -111,42 +72,10 @@ namespace LinkedList
                     return 0;
                 }
             }
+
             // Check the element number and return it
-            Console.WriteLine($"Element found at {elementNum}");
+            Console.WriteLine($"\nElement found at {elementNum}");
             return elementNum;
-        }
-        public void InsertAfterElement(T afterData, T newData)
-        {
-            // If linked list is empty
-            if (this.head == null)
-            {
-                Console.WriteLine("\nNo elements in linked list");
-                return;
-            }
-
-            // If head is not null
-            Node<T> tempNode = this.head;
-            while (!tempNode.data.Equals(afterData))
-            {
-                if (tempNode.next != null)
-                    tempNode = tempNode.next;
-                else
-                {
-                    Console.WriteLine("\nElement not found");
-                    return;
-                }
-            }
-            Node<T> newElement = new Node<T>(newData);
-
-            // If element is to be inserted in between
-            if (tempNode.next != null)
-                InsertBetween(tempNode.data, tempNode.next.data, newData);
-
-            // If the element needs to be inserted at last
-            else
-                InsertAtLast(newData);
-
-            Console.WriteLine("\nElement inserted");
         }
         public void PopElement(T data)
         {
@@ -180,12 +109,32 @@ namespace LinkedList
                     return;
                 }
             }
+
             // If given element is last element
             if (tempNode.next.next == null)
                 PopLast();
 
             // Delete the element in between list
             tempNode.next = tempNode.next.next;
+        }
+        public int ImplementSize()
+        {
+            int count = 1;
+
+            // If linked list is empty
+            if (this.head == null)
+            {
+                Console.WriteLine("\nNo elements in linked list");
+                return 0;
+            }
+            Node<T> tempNode = this.head;
+            while (tempNode.next != null)
+            {
+                count++;
+                tempNode = tempNode.next;
+            }
+            Console.WriteLine("\n The number of elements in linked list are : {0}", count);
+            return count;
         }
         public void DisplayLinkedList()
         {
@@ -195,9 +144,10 @@ namespace LinkedList
                 Console.WriteLine("No elements in linked list");
                 return;
             }
+
             // If linked list has elements then iterate till the next of a node is null
             Node<T> tempNode = this.head;
-            Console.WriteLine("The elements are : ");
+            Console.WriteLine("\nThe elements are : ");
             while (tempNode != null)
             {
                 Console.Write(tempNode.data + "\t");
