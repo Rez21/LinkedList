@@ -37,6 +37,9 @@ namespace LinkedList
 
 
             linkedList.SearchElement(30);
+
+            linkedList.InsertAfterElement(30, 40);
+            linkedList.DisplayLinkedList();
         }
     }
 }

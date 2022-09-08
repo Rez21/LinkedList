@@ -115,7 +115,39 @@ namespace LinkedList
             Console.WriteLine($"Element found at {elementNum}");
             return elementNum;
         }
+        public void InsertAfterElement(T afterData, T newData)
+        {
+            // If linked list is empty
+            if (this.head == null)
+            {
+                Console.WriteLine("\nNo elements in linked list");
+                return;
+            }
 
+            // If head is not null
+            Node<T> tempNode = this.head;
+            while (!tempNode.data.Equals(afterData))
+            {
+                if (tempNode.next != null)
+                    tempNode = tempNode.next;
+                else
+                {
+                    Console.WriteLine("\nElement not found");
+                    return;
+                }
+            }
+            Node<T> newElement = new Node<T>(newData);
+
+            // If element is to be inserted in between
+            if (tempNode.next != null)
+                InsertBetween(tempNode.data, tempNode.next.data, newData);
+
+            // If the element needs to be inserted at last
+            else
+                InsertAtLast(newData);
+
+            Console.WriteLine("\nElement inserted");
+        }
         public void DisplayLinkedList()
         {
             // If linked list is empty
