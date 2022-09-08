@@ -40,6 +40,9 @@ namespace LinkedList
 
             linkedList.InsertAfterElement(30, 40);
             linkedList.DisplayLinkedList();
+
+            linkedList.PopElement(40);
+            linkedList.DisplayLinkedList();
         }
     }
 }

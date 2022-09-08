@@ -148,6 +148,45 @@ namespace LinkedList
 
             Console.WriteLine("\nElement inserted");
         }
+        public void PopElement(T data)
+        {
+            // If linked list is empty
+            if (this.head == null)
+            {
+                Console.WriteLine("\nNo elements in linked list");
+                return;
+            }
+
+            // If the searched element is first element
+            if (head.data.Equals(data))
+                this.head = head.next;
+
+            // If the list has only one element
+            else if (head.next == null)
+            {
+                Console.WriteLine("Element not found");
+                return;
+            }
+            Node<T> tempNode = this.head;
+
+            // If data in tempNode is not equal to user entry then go to next node
+            while (!tempNode.next.data.Equals(data))
+            {
+                if (tempNode.next != null)
+                    tempNode = tempNode.next;
+                else
+                {
+                    Console.WriteLine("Element not found");
+                    return;
+                }
+            }
+            // If given element is last element
+            if (tempNode.next.next == null)
+                PopLast();
+
+            // Delete the element in between list
+            tempNode.next = tempNode.next.next;
+        }
         public void DisplayLinkedList()
         {
             // If linked list is empty
